@@ -1,0 +1,43 @@
+@startuml
+
+[*] --> start
+
+state "team_search" as start {
+start: Ищем во входной строке 
+start: поддерживаемую команду.
+}
+
+start --> fts: 0
+start --> arg1: 1
+start --> arg2: 2
+
+
+state "team_search_fail" as fts {
+fts: Поддерживаемой команды 
+fts: найдено не было. 
+fts: Выводим список поддерживаемых
+fts: команд.
+}
+
+state "set_param" as arg1 {
+arg1: Проверяем входной параметр.
+}
+
+state "read_param" as arg2 {
+arg2: Выводим требуемый параметр.
+}
+
+arg1 --> spd: 0
+arg1 --> spn: 1
+
+state "set_param_done" as spd {
+spd: Выводим сообщение о том, 
+spd: что параметр был принят верно.
+}
+
+state "set_param_fail" as spn {
+spn: Выводим сообщение о том, 
+spn: что параметр не был принят.
+}
+
+@enduml
